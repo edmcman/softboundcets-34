@@ -1430,7 +1430,7 @@ __WEAK_INLINE char*  softboundcets_strtok(char* str, const char* delim){
   return ret_ptr;
 }
 
-__WEAK_INLINE void __softboundcets_strdup_handler(void* ret_ptr){
+__WEAK_INLINE void __softboundcets_string_handler(void* ret_ptr){
   key_type ptr_key;
   lock_type ptr_lock;
   
@@ -1452,7 +1452,7 @@ __WEAK_INLINE char* softboundcets_strndup(const char* s, size_t n){
   
   /* IMP: strndup just copies the string s */  
   char* ret_ptr = strndup(s, n);
-  __softboundcets_strdup_handler(ret_ptr);  
+  __softboundcets_string_handler(ret_ptr);  
   return ret_ptr;
  }
 
@@ -1463,17 +1463,22 @@ __WEAK_INLINE char* softboundcets_strdup(const char* s){
   /* IMP: strdup just copies the string s */  
   void* ret_ptr = strdup(s);
   
-  __softboundcets_strdup_handler(ret_ptr);
+  __softboundcets_string_handler(ret_ptr);
   return ret_ptr;
  }
 
 __WEAK_INLINE char* softboundcets___strdup(const char* s){
 
   void* ret_ptr = strdup(s);
-  __softboundcets_strdup_handler(ret_ptr);
+  __softboundcets_string_handler(ret_ptr);
   return ret_ptr;
 }
 
+__WEAK_INLINE char* softboundcets_tempnam(const char *dir, const char *pfx) {
+  void* ret_ptr = tempnam(dir, pfx);
+  __softboundcets_string_handler(ret_ptr);
+  return ret_ptr;
+}
 
  __WEAK_INLINE char* softboundcets_strcat (char* dest, const char* src){
 

@@ -1237,7 +1237,7 @@ __WEAK_INLINE char*  softboundmpx_strtok(char* str, const char* delim){
   return ret_ptr;
 }
 
-__WEAK_INLINE void __softboundmpx_strdup_handler(void* ret_ptr){
+__WEAK_INLINE void __softboundmpx_string_handler(void* ret_ptr){
 
   if(ret_ptr == NULL) {
     __softboundmpx_store_null_return_metadata();
@@ -1255,7 +1255,7 @@ __WEAK_INLINE char* softboundmpx_strndup(const char* s, size_t n){
   
   /* IMP: strndup just copies the string s */  
   char* ret_ptr = strndup(s, n);
-  __softboundmpx_strdup_handler(ret_ptr);  
+  __softboundmpx_string_handler(ret_ptr);  
   return ret_ptr;
  }
 
@@ -1266,17 +1266,22 @@ __WEAK_INLINE char* softboundmpx_strdup(const char* s){
   /* IMP: strdup just copies the string s */  
   void* ret_ptr = strdup(s);
   
-  __softboundmpx_strdup_handler(ret_ptr);
+  __softboundmpx_string_handler(ret_ptr);
   return ret_ptr;
  }
 
 __WEAK_INLINE char* softboundmpx___strdup(const char* s){
 
   void* ret_ptr = strdup(s);
-  __softboundmpx_strdup_handler(ret_ptr);
+  __softboundmpx_string_handler(ret_ptr);
   return ret_ptr;
 }
 
+__WEAK_INLINE char* softboundmpx_tempnam(const char *dir, const char *pfx) {
+  void* ret_ptr = tempnam(dir, pfx);
+  __softboundmpx_string_handler(ret_ptr);
+  return ret_ptr;
+}
 
  __WEAK_INLINE char* softboundmpx_strcat (char* dest, const char* src){
 

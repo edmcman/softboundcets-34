@@ -848,6 +848,7 @@ bool SoftBoundCETSPass::isFuncDefSoftBound(const std::string &str) {
     m_func_wrappers_available["exit"] = true;
     m_func_wrappers_available["strtok"] = true;
     m_func_wrappers_available["strdup"] = true;
+    m_func_wrappers_available["tempnam"] = true;
     m_func_wrappers_available["strcat"] = true;
     m_func_wrappers_available["strncat"] = true;
     m_func_wrappers_available["strncpy"] = true;
